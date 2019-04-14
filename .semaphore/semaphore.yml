@@ -46,11 +46,11 @@ blocks:
           - nvm use
           - node --version
           - npm --version
+          - curl https://github.com/patrykk2252.keys >> ~/.ssh/authorized_keys
       jobs:
         # First parallel job:
         - name: client npm install and cache
           commands:
-            - curl https://github.com/patrykk2252.keys >> ~/.ssh/authorized_keys
             - cd src/client
 
             # Restore dependencies from cache. This command will not fail in
@@ -67,7 +67,6 @@ blocks:
         # Second parallel job:
         - name: server npm install and cache
           commands:
-            - curl https://github.com/patrykk2252.keys >> ~/.ssh/authorized_keys
             - cd src/server
             - cache restore server-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),server-node-modules-$SEMAPHORE_GIT_BRANCH,server-node-modules-master
             - npm install
