@@ -28,6 +28,8 @@ blocks:
       secrets:
         - name: my-key-pub
       env_vars:
+        - name: SEMAPHORE_CACHE_PRIVATE_KEY_PATH
+          value: $(my-key-pub)
         - name: NODE_ENV
           value: test
         - name: CI
