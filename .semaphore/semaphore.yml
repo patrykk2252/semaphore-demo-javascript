@@ -71,6 +71,8 @@ blocks:
 
   - name: Lint
     task:
+      secrets:
+        - name: my-key-pub
       env_vars:
         - name: NODE_ENV
           value: test
