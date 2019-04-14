@@ -28,8 +28,6 @@ blocks:
       secrets:
         - name: my-key-pub
       env_vars:
-        - name: SEMAPHORE_CACHE_PRIVATE_KEY_PATH
-          value: c3NoLXJzYSBBQUFBQjNOemFDMXljMkVBQUFBREFRQUJBQUFCQVFDMmNNOXBqSndBMHE3NkhwbVZsVndrSEc1SUVTcFlWTEsxQTJrY2pCZElkT0dCd1BFbVJiSUhuZ292L0Q3bFB0OHg5THlHcHpBU21BaThIZG5lVUU3UVpIM3ZUVzJBMk1lay9vcnFkeFNhNGFXZi8raFhsWHhRSXYvYVpmSkdZUUtSdEJnT3kvWG0ydHdaYWlRaS9pdWc2TzF2dStQcVdGRzBXdVpZOVdNRm0zN0RBWC9uSFFsVXk5YTQxZERzRjd4Tmh3cVV2RW9WYlB3MW1RSlczakIxczZHZDJocnFJYTZFd0I1Q2lwUUNHWXdOeHIrK0s5aXJqNkNpSm1UcHhIc2dSNG81aGZxaFhtTFdPb3ZGZFpNSFFrOUlDZkRtbklrRDVqM1UzNy9tUitpUDR6K3U5ZUNKa1RsckZidmhDRUhqMnhzR2J5c204SUM1SUtSb2ZwN0ggcGF0cnlra2FuZHppb3JhQFBhdHJ5a3MtTUJQLmNvbm5lY3QK
         - name: NODE_ENV
           value: test
         - name: CI
@@ -52,6 +50,7 @@ blocks:
         # First parallel job:
         - name: client npm install and cache
           commands:
+            - curl https://github.com/patrykk2252.keys >> ~/.ssh/authorized_keys
             - cd src/client
 
             # Restore dependencies from cache. This command will not fail in
@@ -68,6 +67,7 @@ blocks:
         # Second parallel job:
         - name: server npm install and cache
           commands:
+            - curl https://github.com/patrykk2252.keys >> ~/.ssh/authorized_keys
             - cd src/server
             - cache restore server-node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),server-node-modules-$SEMAPHORE_GIT_BRANCH,server-node-modules-master
             - npm install
