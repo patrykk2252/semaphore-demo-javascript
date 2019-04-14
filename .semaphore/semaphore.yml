@@ -25,6 +25,8 @@ blocks:
     task:
       # Set environment variables that your project requires.
       # See https://docs.semaphoreci.com/article/66-environment-variables-and-secrets
+      secrets:
+        - name: my-key-pub
       env_vars:
         - name: NODE_ENV
           value: test
