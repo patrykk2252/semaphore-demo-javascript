@@ -33,11 +33,11 @@ blocks:
         - name: CI
           value: 'true'
         - name: SEMAPHORE_CACHE_PRIVATE_KEY_PATH
-          value:
+          value: ~/.ssh/
         - name: SEMAPHORE_CACHE_USERNAME
-          value:
+          value: patrykk
         - name: SEMAPHORE_CACHE_URL
-          value:
+          value: localhost
 
       # This block runs two jobs in parallel and they both share common
       # setup steps. We can group them in a prologue.
