@@ -32,6 +32,12 @@ blocks:
           value: test
         - name: CI
           value: 'true'
+        - name: SEMAPHORE_CACHE_PRIVATE_KEY_PATH
+          value:
+        - name: SEMAPHORE_CACHE_USERNAME
+          value:
+        - name: SEMAPHORE_CACHE_URL
+          value:
 
       # This block runs two jobs in parallel and they both share common
       # setup steps. We can group them in a prologue.
